@@ -23,6 +23,21 @@ public class SwitchCamera : MonoBehaviour
         }
     }
 
+    public void ActivateCamera(Camera camera) //pressed the button to switch the camera
+    {
+        camera.enabled = true;
+        foreach (Camera c in cameras)
+        {
+            c.enabled = false;
+        }
+        camera.enabled = true;
+    }
+
+    public void SAY()
+    {
+        Debug.Log("Works");
+    }
+
     public void AddCameras(Camera newCamara)
     {
         cameras.Add(newCamara);
