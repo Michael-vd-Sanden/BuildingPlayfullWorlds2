@@ -25,6 +25,7 @@ public class PlayerControls : MonoBehaviour
                     //press button
                     SetFocus(interactable);
                     Debug.Log("Pressed button");
+                    focus.activateCoroutine();
                     switchCamera.ActivateCamera(focus.GetComponentInParent<Camera>());
                 }
             }

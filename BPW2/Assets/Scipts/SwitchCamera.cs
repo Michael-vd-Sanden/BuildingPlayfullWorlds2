@@ -33,13 +33,4 @@ public class SwitchCamera : MonoBehaviour
         camera.enabled = true;
     }
 
-    public void SAY()
-    {
-        Debug.Log("Works");
-    }
-
-    public void AddCameras(Camera newCamara)
-    {
-        cameras.Add(newCamara);
-    }
 }

@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce52a29d61c12e4abb791b5691adb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchCamera: {fileID: 0}
