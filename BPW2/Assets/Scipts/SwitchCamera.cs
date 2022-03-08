@@ -10,8 +10,9 @@ public class SwitchCamera : MonoBehaviour
 
     private void Start()
     {
-        startCamera.enabled = true;
-        secondCamera.enabled = false;
+       // startCamera.enabled = true;
+       // secondCamera.enabled = false;
+        ActivateCamera(startCamera);
     }
 
     private void Update()

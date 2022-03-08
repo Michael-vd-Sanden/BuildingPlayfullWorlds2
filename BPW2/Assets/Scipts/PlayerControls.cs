@@ -17,7 +17,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 50))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2))
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null) // hit 

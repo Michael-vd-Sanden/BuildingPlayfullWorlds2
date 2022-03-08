@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorTriggerCamera : MonoBehaviour
+public class CageSwitch : MonoBehaviour
 {
-    public SwitchCamera switchCamera;
     public Material btnGreen;
     public Material btnStart;
     Renderer rend;
@@ -19,8 +18,13 @@ public class DoorTriggerCamera : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            switchCamera.ActivateCamera(GetComponentInParent<Camera>());
+            //switchCamera.ActivateCamera(GetComponentInParent<Camera>());
+            //GameObject.Destroy(GameObject.Find("Cage"));
             rend.sharedMaterial = btnGreen;
+            if (transform.GetChild(0) != null)
+            {
+                Destroy(transform.GetChild(0).gameObject);
+            }
         }
     }
 
