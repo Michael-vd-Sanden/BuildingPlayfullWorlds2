@@ -16,7 +16,7 @@ public class CageSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PickupBlock"))
         {
             //switchCamera.ActivateCamera(GetComponentInParent<Camera>());
             //GameObject.Destroy(GameObject.Find("Cage"));
@@ -30,7 +30,7 @@ public class CageSwitch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PickupBlock"))
         {
             rend.sharedMaterial = btnStart;
         }
