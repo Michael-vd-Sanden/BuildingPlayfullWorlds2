@@ -4,25 +4,57 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public Transform destination;
     public GameObject blockHolder;
     private Rigidbody rb;
     private BoxCollider collider;
+    private bool inRange;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<BoxCollider>();
+        inRange = false;
     }
 
-    public void PickUp() //als face beweegt, ook nog de raycast mee bewegen naar beneden
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = true;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if(inRange)
+            {
+                PickUp();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Drop();
+        }
+    }
+
+    public void PickUp() 
     {
         if (blockHolder.GetComponentInChildren<Pickup>() == null)
-        {
-            collider.enabled = false;
-            rb.useGravity = false;
-            this.transform.position = destination.position;
+        {          
+            this.transform.position = blockHolder.transform.position;
             this.transform.parent = blockHolder.transform;
+            rb.useGravity = false;
+            collider.enabled = false; 
         }
     }
 
@@ -31,8 +63,8 @@ public class Pickup : MonoBehaviour
         if (blockHolder.GetComponentInChildren<Pickup>() != null)
         {
             this.transform.parent = null;
-            rb.useGravity = true;
             collider.enabled = true;
+            rb.useGravity = true;     
         }
     }
 }
