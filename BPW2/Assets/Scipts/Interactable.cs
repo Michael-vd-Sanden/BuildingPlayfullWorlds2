@@ -8,6 +8,8 @@ public class Interactable : MonoBehaviour
     public Material btnRed;
     public Material btnGreen;
     Renderer rend;
+    public Canvas canvas;
+    public GameObject player;
 
     private void OnDrawGizmosSelected()
     {
@@ -19,11 +21,25 @@ public class Interactable : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         rend.sharedMaterial = btnRed;
+        canvas.enabled = false;
     }
 
     public void activateCoroutine()
     {
         StartCoroutine(setMaterial());
+        if(this.CompareTag("Screen"))
+        {
+            canvas.enabled = true;
+            player.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    public void backToCamera()
+    {
+        canvas.enabled = false;
+        player.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public IEnumerator setMaterial()

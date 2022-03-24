@@ -18,8 +18,6 @@ public class CageSwitch : MonoBehaviour
     {
         if (other.CompareTag("PickupBlock"))
         {
-            //switchCamera.ActivateCamera(GetComponentInParent<Camera>());
-            //GameObject.Destroy(GameObject.Find("Cage"));
             rend.sharedMaterial = btnGreen;
             if (transform.GetChild(0) != null)
             {

@@ -5,13 +5,11 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public GameObject blockHolder;
-    private Rigidbody rb;
-    private BoxCollider collider;
+    new private BoxCollider collider;
     private bool inRange;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         collider = GetComponent<BoxCollider>();
         inRange = false;
     }
@@ -50,10 +48,12 @@ public class Pickup : MonoBehaviour
     public void PickUp() 
     {
         if (blockHolder.GetComponentInChildren<Pickup>() == null)
-        {          
+        {
+            Rigidbody rbBlock;
+            rbBlock = GetComponent<Rigidbody>();
             this.transform.position = blockHolder.transform.position;
             this.transform.parent = blockHolder.transform;
-            rb.useGravity = false;
+            Destroy(rbBlock);
             collider.enabled = false; 
         }
     }
@@ -64,7 +64,7 @@ public class Pickup : MonoBehaviour
         {
             this.transform.parent = null;
             collider.enabled = true;
-            rb.useGravity = true;     
+            gameObject.AddComponent(typeof(Rigidbody));
         }
     }
 }
